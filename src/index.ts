@@ -5,7 +5,12 @@ import { PRESENTATION_MESSAGES } from './constats';
 import { deployCommands } from './desploy-commands';
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.MessageContent,
+    ],
 });
 
 (async () => {
@@ -22,16 +27,20 @@ client.on(Events.InteractionCreate, (interaction) => {
 });
 
 client.on('messageCreate', async (message) => {
-    if (message.channel.id === config.CHANNEL_ID && !message.author.bot) {
-        const role = message?.guild?.roles.cache.get(config.ROLE_ID!);
+    try {
+        if (message.channel.id === config.CHANNEL_ID && !message.author.bot) {
+            const role = message?.guild?.roles.cache.get(config.ROLE_ID!);
 
-        if (
-            !message.member?.roles.cache.has(role?.id != undefined ? role.id : '') &&
-            role &&
-            PRESENTATION_MESSAGES.some((item) => message.content.toLowerCase().includes(item))
-        ) {
-            await message.member?.roles.add(role);
+            if (
+                !message.member?.roles.cache.has(role?.id != undefined ? role.id : '') &&
+                role &&
+                PRESENTATION_MESSAGES.some((item) => message.content.toLowerCase().includes(item))
+            ) {
+                await message.member?.roles.add(role);
+            }
         }
+    } catch (err) {
+        console.error('Deu erro garaio', err);
     }
 });
 
