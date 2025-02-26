@@ -11,6 +11,7 @@ const PRESENTATION_MESSAGES: string[] = [
   'backend',
   'oi',
   'ola',
+  'olá',
   'estudante',
   'pessoal',
   'chamo',
