@@ -16,6 +16,17 @@ const PRESENTATION_MESSAGES: string[] = [
   'pessoal',
   'chamo',
   'curso',
+  'me chamo',
+  'transição',
+  'carreira',
+  'desenvolvimento',
+  'fala',
+  'opa',
+  'salve',
+  'guys',
+  'rapaziada',
+  'estágio',
+  'estagio',
 ];
 
 export { PRESENTATION_MESSAGES };
