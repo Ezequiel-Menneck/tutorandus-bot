@@ -18,7 +18,7 @@ const client = new Client({
 })();
 
 client.once('ready', () => {
-    console.log('TutorandusBot is ready 🦾');
+    slog(LogLevels.LOG, 'TutorandusBot is ready 🦾');
 });
 
 client.on(Events.InteractionCreate, (interaction) => {
@@ -37,10 +37,11 @@ client.on('messageCreate', async (message) => {
                 PRESENTATION_MESSAGES.some((item) => message.content.toLowerCase().includes(item))
             ) {
                 await message.member?.roles.add(role);
+                slog(LogLevels.INFO, `Added user ${message.member?.displayName} to the role '${role}'`)
             }
         }
     } catch (err) {
-        console.error('Deu erro garaio', err);
+        slog(LogLevels.ERROR, `Unable to add role to user ${message.member?.displayName}`)
     }
 });
 
