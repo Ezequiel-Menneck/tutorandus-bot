@@ -12,8 +12,7 @@ jobs:
         uses: actions/checkout
 
       - uses: actions/checkout@v4
-      - name: Copy project via SSH PASSWORD
-        uses: appleboy/scp-action@v0.1.7
+        name: Copy project via SSH PASSWORD
         with:
           host: ${{ secrets.HOST_TUTORANDUS_BOT }}
           username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
