@@ -1,0 +1,32 @@
+name: 'Deploy to VPS when merge a PR on main'
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Download code'
+        uses: actions/checkout
+
+      - uses: actions/checkout@v4
+      - name: Copy project via SSH PASSWORD
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_TUTORANDUS_BOT }}
+          username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
+          password: ${{ secrets.PASSWORD_TUTORANDUS_BOT }}
+          source: '.'
+          target: /tutorandus-bot
+
+      - name: 'Application build'
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: ${{ secrets.HOST_TUTORANDUS_BOT }}
+          username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
+          password: ${{ secrets.PASSWORD_TUTORANDUS_BOT }}
+          script: |
+            cd /tutorandus-bot
+            pnpm i
