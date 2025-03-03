@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
           password: ${{ secrets.PASSWORD_TUTORANDUS_BOT }}
           source: '.'
-          target: /tutorandus-bot
+          target: tutorandus-bot
 
       - name: 'Application build'
         uses: appleboy/ssh-action@v1.2.1
