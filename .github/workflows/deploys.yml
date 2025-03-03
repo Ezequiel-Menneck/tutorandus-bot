@@ -11,8 +11,8 @@ jobs:
       - name: 'Download code'
         uses: actions/checkout
 
-      - uses: actions/checkout@v4
-        name: Copy project via SSH PASSWORD
+      - name: Copy project via SSH PASSWORD
+        uses: actions/checkout@v4
         with:
           host: ${{ secrets.HOST_TUTORANDUS_BOT }}
           username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
