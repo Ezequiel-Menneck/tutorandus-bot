@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: 'Download code'
-        uses: actions/checkout
+        uses: actions/checkout@v4
 
       - name: Copy project via SSH PASSWORD
-        uses: actions/checkout@v4
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST_TUTORANDUS_BOT }}
           username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
