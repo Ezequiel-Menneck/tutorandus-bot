@@ -33,6 +33,11 @@ jobs:
           password: ${{ secrets.PASSWORD_TUTORANDUS_BOT }}
           script: |
             cd tutorandus-bot
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+            \. "$HOME/.nvm/nvm.sh"
+            nvm install --lts
+            npm install pnpm@latest-10
+            npm install pm2
             pnpm i
             pnpm run build
             pm2 run /dist/index.js
