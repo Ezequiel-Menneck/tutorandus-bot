@@ -1,6 +1,6 @@
 # 🤖 Tutorandus Community Bot 🤖
 
-Bem-vindo ao repositório do Nome do Bot, um bot para Discord desenvolvido pela comunidade! 🎉
+Bem-vindo ao repositório do Tutorandus Bot, um bot para Discord desenvolvido pela comunidade! 🎉
 
 ## 🚀 Sobre o Projeto
 
@@ -8,7 +8,7 @@ O Tutorandus Bot é um projeto colaborativo criado para atender às necessidades
 
 ## 🛠 Como Contribuir
 
-Quer ajudar no desenvolvimento do Nome do Bot? Siga os passos abaixo:
+Quer ajudar no desenvolvimento do Tutorandus Bot? Siga os passos abaixo:
 
 Fork este repositório.
 
