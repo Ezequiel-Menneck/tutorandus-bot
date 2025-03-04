@@ -1,12 +1,17 @@
 name: 'Deploy to VPS when merge a PR on main'
 on:
+  pull_request:
+    types:
+      - closed
   push:
     branches:
       - main
 jobs:
   build_deploy:
+    if: >
+      github.event_name == 'push' ||
+      (github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-latest
-
     steps:
       - name: 'Download code'
         uses: actions/checkout@v4
@@ -27,5 +32,7 @@ jobs:
           username: ${{ secrets.USERNAME_TUTORANDUS_BOT }}
           password: ${{ secrets.PASSWORD_TUTORANDUS_BOT }}
           script: |
-            cd /tutorandus-bot
+            cd tutorandus-bot
             pnpm i
+            pnpm run build
+            pm2 run /dist/index.js
