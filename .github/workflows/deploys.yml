@@ -3,14 +3,10 @@ on:
   pull_request:
     types:
       - closed
-  push:
-    branches:
-      - main
 jobs:
   build_deploy:
     if: >
-      github.event_name == 'push' ||
-      (github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main')
+      github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: 'Download code'
