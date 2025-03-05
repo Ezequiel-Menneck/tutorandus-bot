@@ -1,4 +1,4 @@
-enum LogLevels {
+export enum LogLevels {
     TRACE,
     DEBUG,
     LOG,
@@ -8,7 +8,7 @@ enum LogLevels {
     FATAL
 }
 
-const logLevelColors = {
+export const logLevelColors = {
     [LogLevels.TRACE]: '\x1b[34m', // Blue
     [LogLevels.DEBUG]: '\x1b[36m', // Cyan
     [LogLevels.LOG]: '\x1b[32m',   // Green
@@ -22,7 +22,7 @@ const resetColor = '\x1b[0m';
 
 
 // slog -> it means structured loggin, based in go slog
-function slog(level: LogLevels, message: string) {
+export function slog(level: LogLevels, message: string) {
     const color = logLevelColors[level]
     const levelName = LogLevels[level].toUpperCase()
 

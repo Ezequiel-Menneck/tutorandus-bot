@@ -3,6 +3,8 @@ import { commands } from './commands';
 import { config } from './config';
 import { PRESENTATION_MESSAGES } from './constats';
 import { deployCommands } from './desploy-commands';
+import { LogLevels, slog } from './utils/log'
+
 
 const client = new Client({
     intents: [
